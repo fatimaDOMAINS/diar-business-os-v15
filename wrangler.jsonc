@@ -33,7 +33,7 @@
     {
       "binding": "DB",
       "database_name": "diar-business-os-dev",
-      "database_id": "REPLACE_WITH_DEV_D1_DATABASE_ID"
+      "database_id": "e0c41136-4608-480a-b7b5-8610e9a04613"
     }
   ],
   "env": {
@@ -63,7 +63,7 @@
         {
           "binding": "DB",
           "database_name": "diar-business-os-production",
-          "database_id": "REPLACE_WITH_PRODUCTION_D1_DATABASE_ID"
+          "database_id": "608da55e-f250-44c8-a1cd-0d3edd2fea54"
         }
       ]
     }
