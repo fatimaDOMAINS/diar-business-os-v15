@@ -39,6 +39,9 @@
   "env": {
     "staging": {
       "name": "diar-business-os-core-v15-staging",
+      "ai": {
+        "binding": "AI"
+      },
       "vars": {
         "APP_ENV": "staging",
         "ALLOW_LEGACY_PARTNER_AUTH": "false",
@@ -48,7 +51,7 @@
         {
           "binding": "DB",
           "database_name": "diar-business-os-staging",
-          "database_id": "aefde3b9-1457-42ab-b14f-c7ec6414f601"
+          "database_id": "aedfe3b9-1457-42ab-b14f-c7ec6414f601"
         }
       ]
     },
