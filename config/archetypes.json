@@ -1,0 +1,14 @@
+{
+  "version": 13,
+  "principle": "One core, configurable conversion archetypes. Choose business opportunity before domain.",
+  "archetypes": [
+    "audience_acquisition",
+    "brand_growth",
+    "distribution",
+    "high_ticket_relationship",
+    "enterprise_advisory",
+    "marketplace"
+  ],
+  "core_flow": ["traffic_or_audience","intent","browse_ai_or_direct","qualification","offer_or_match","conversion","crm","human","follow_up","opportunity_or_revenue"],
+  "domain_roles": ["core_brand","acquisition_channel","expansion_asset","secondary_asset","not_required"]
+}

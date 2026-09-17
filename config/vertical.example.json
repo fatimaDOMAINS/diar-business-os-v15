@@ -1,0 +1,13 @@
+{
+  "tenant": {"slug":"demo","name":"Demo Business","domain":"example.com"},
+  "vertical": {"slug":"generic-services","name":"Professional Services"},
+  "brand": {"headline":"Turn interest into revenue","cta":"Get your personalised recommendation"},
+  "intent_fields": [
+    {"key":"need","label":"What do you need?","type":"text","required":true},
+    {"key":"budget","label":"Budget","type":"text"},
+    {"key":"location","label":"Location","type":"text"},
+    {"key":"timeline","label":"Timeline","type":"text"}
+  ],
+  "conversion_modes":["lead","quote","booking","purchase","subscription","application","match"],
+  "default_conversion_mode":"lead"
+}
