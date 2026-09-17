@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SolarEnergy24 Solar Intelligence</title><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="brand">SolarEnergy24 Intelligence</div><nav><a href="/">Marketplace</a><a href="/vip-analytics.html">VIP Analytics</a></nav></header>
+<main><section><span class="eyebrow">V11 — Solar Intelligence</span><h1>Project intelligence for homeowners, commercial buyers, developers and solar partners.</h1><p>Evergreen guides around project readiness, provider evaluation and solar + storage briefs.</p><div id="items"></div></section></main>
+<script>
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+(async()=>{const d=await (await fetch('/api/content')).json();items.innerHTML=(d.items||[]).map(x=>`<div class="card" style="margin:14px 0"><span class="eyebrow">${esc(x.category)}</span><h2 style="margin-top:8px">${esc(x.title)}</h2><p>${esc(x.summary)}</p><a class="btn" href="/article.html?slug=${encodeURIComponent(x.slug)}">Read guide</a></div>`).join('')})()
+</script></body></html>

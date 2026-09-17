@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SolarEnergy24 Project Deal Room</title><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="brand">SolarEnergy24 Project Deal Room</div><nav><a href="/partner.html">Partner Portal</a><a href="/">Marketplace</a></nav></header>
+<main><section><span class="eyebrow">V18</span><h1>Unified Solar Project Deal Room</h1>
+<div class="card form"><input id="pid" placeholder="Provider ID fallback"><input id="partnerkey" placeholder="Legacy partner key"><input id="leadid" placeholder="Lead ID"><button onclick="loadRoom()">Open Deal Room</button></div><div id="room"></div></section></main>
+<script>
+let session=localStorage.getItem('solarenergy24_session')||'';
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function headers(){const h={};if(session)h.authorization='Bearer '+session;else{h['x-provider-id']=pid.value;h['x-partner-key']=partnerkey.value}return h}
+
+async function loadRoom(){
+ const q=new URLSearchParams(location.search).get('lead_id');
+ if(q&&!leadid.value)leadid.value=q;
+ const d=await (await fetch('/api/provider/deal-room?lead_id='+encodeURIComponent(leadid.value),{headers:headers()})).json();
+ if(d.error){room.innerHTML=`<p>${esc(d.error)}</p>`;return}
+
+ const miss=JSON.parse(d.brief?.missing_json||'[]'),risk=JSON.parse(d.brief?.risk_flags_json||'[]');
+
+ room.innerHTML=`<div class="grid">
+ <div class="card"><h3>Solar project</h3><p>${esc(d.lead.buyer_type)} · ${esc(d.lead.project_type)}</p><p>${esc(d.lead.country||'')} / ${esc(d.lead.city||'')} · ${esc(d.lead.property_type||'')}</p><p>Readiness <b>${esc(d.lead.readiness_band||'—')} ${d.lead.readiness_score??''}/100</b></p></div>
+ <div class="card"><h3>Provider review</h3><p>${esc(d.review?.review_status||'pending')}</p><small>Identity ${esc(d.review?.identity_check||'pending')} · Licensing ${esc(d.review?.licensing_check||'pending')} · Engineering ${esc(d.review?.engineering_check||'pending')} · Grid ${esc(d.review?.grid_scope_check||'pending')} · Certification ${esc(d.review?.certification_check||'pending')}</small></div>
+ </div>
+ <div class="card"><h3>Readiness brief</h3><p>${esc(d.brief?.recommended_next_action||'No brief')}</p><small>Missing: ${esc(miss.join(', ')||'none')} · Risk flags: ${esc(risk.join(', ')||'none')}</small></div>
+ <h2>Deal Room Items</h2>${(d.items||[]).map(x=>`<div class="provider"><b>${esc(x.title)}</b> · ${esc(x.status||'')}<p>${esc(x.body||'')}</p></div>`).join('')}
+ <h2>Copilot Drafts</h2>${(d.drafts||[]).map(x=>`<div class="card"><b>${esc(x.draft_type)}</b><p>${esc(x.output_text)}</p></div>`).join('')||'<p>No drafts yet.</p>'}
+ <h2>Follow-ups</h2>${(d.followups||[]).map(x=>`<div class="provider">${esc(x.followup_type)} · ${esc(x.status)} · ${esc(x.due_at)}</div>`).join('')||'<p>No follow-ups.</p>'}
+ <div class="card form">
+ <select id="itemtype"><option value="note">Internal note</option><option value="site_update">Site update</option><option value="engineering_update">Engineering update</option><option value="grid_update">Grid / interconnection update</option><option value="equipment_update">Equipment update</option><option value="quote_update">Quote update</option><option value="financing_update">Financing update</option><option value="installation_update">Installation coordination update</option></select>
+ <input id="title" placeholder="Title"><textarea id="body" placeholder="Verified project, engineering or commercial update"></textarea><button onclick="addItem()">Add Deal Room item</button></div>`;
+}
+
+async function addItem(){
+ await fetch('/api/provider/deal-room/item',{
+  method:'POST',headers:{...headers(),'content-type':'application/json'},
+  body:JSON.stringify({lead_id:leadid.value,item_type:itemtype.value,title:title.value,body:body.value,status:'open'})
+ });
+ await loadRoom();
+}
+if(new URLSearchParams(location.search).get('lead_id'))loadRoom();
+</script></body></html>

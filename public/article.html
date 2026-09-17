@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SolarEnergy24 Project Guide</title><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="brand">SolarEnergy24.com</div><nav><a href="/intelligence.html">Intelligence</a><a href="/">Marketplace</a></nav></header>
+<main><article id="article" class="card" style="margin-top:40px"></article></main>
+<script>
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+(async()=>{const slug=new URLSearchParams(location.search).get('slug');const d=await (await fetch('/api/content/item?slug='+encodeURIComponent(slug||''))).json();article.innerHTML=d.error?'<h1>Guide not found</h1>':`<span class="eyebrow">${esc(d.category)}</span><h1>${esc(d.title)}</h1><p><b>${esc(d.summary)}</b></p><p>${esc(d.body)}</p><p><a class="btn" href="/#lead">Submit solar project brief</a></p>`})()
+</script></body></html>

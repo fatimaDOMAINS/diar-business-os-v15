@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SolarEnergy24 Enterprise Analytics</title><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="brand">SolarEnergy24 Enterprise Analytics</div><nav><a href="/owner.html">Owner</a><a href="/vip-analytics.html">VIP Analytics</a></nav></header>
+<main><section><h1>V15–V18 Operations</h1><div class="card form"><input id="akey" placeholder="Admin key"><button onclick="load()">Load</button></div><div id="top" class="grid" style="margin-top:18px"></div></section></main>
+<script>
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+async function load(){const d=await (await fetch('/api/owner/enterprise-stats',{headers:{'x-admin-key':akey.value}})).json();top.innerHTML=[['Leads',d.leads],['READY',d.ready],['PARTIAL',d.partial],['Risk flagged',d.risk_flagged],['Open follow-ups',d.open_followups],['Deal rooms',d.deal_rooms],['Copilot drafts',d.copilot_drafts],['Owner attention',d.owner_attention]].map(x=>`<div class="tile"><b>${esc(x[0])}</b><span style="font-size:28px">${esc(x[1]??0)}</span></div>`).join('')}
+</script></body></html>

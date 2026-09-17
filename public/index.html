@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SolarEnergy24.com — Solar Project & Installer Acquisition Platform</title><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="brand">SolarEnergy24.com</div><nav><a href="#advisor">Solar Advisor</a><a href="#categories">Solutions</a><a href="#compare">Providers</a><a href="#lead">Project Brief</a><a href="/partner.html">Solar Partner Portal</a><a href="/apply.html">Join Network</a></nav></header><main>
+<section class="hero"><div><span class="eyebrow">Solar PV • Storage • EPC • Financing • Monitoring</span><h1>Turn solar interest into qualified energy projects.</h1><p>AI-assisted discovery and lead generation for homeowners, businesses, developers, installers, EPCs, battery integrators and solar-tech providers.</p><a class="btn" href="#advisor">Start Solar Advisor</a></div><div class="glass"><b>BASIC V1–V4</b><p>Advisor → Compare → Lead → Marketplace</p><small>Seed provider profiles and commercial/technical details are illustrative until independently verified.</small></div></section>
+<section id="advisor"><h2>V1 — Solar Project Advisor</h2><div class="card"><textarea id="q" placeholder="Example: We operate a warehouse in Dubai and want rooftop solar with battery backup."></textarea><button onclick="ask()">Find project path</button><div id="result"></div></div></section>
+<section id="categories"><h2>V2 — Solar Solution Discovery</h2><div class="grid"><div class="tile">🏠<b>Residential Solar</b><span>Rooftop PV and home energy projects.</span></div><div class="tile">🏭<b>Commercial Solar</b><span>C&I rooftop, EPC and energy-cost reduction projects.</span></div><div class="tile">🔋<b>Battery Storage</b><span>PV + BESS and energy management.</span></div><div class="tile">☀️<b>Utility Scale</b><span>Ground-mount and development partnerships.</span></div><div class="tile">💳<b>Solar Financing</b><span>Lease, finance and PPA introductions.</span></div><div class="tile">📊<b>Monitoring & Software</b><span>Performance analytics and fleet monitoring.</span></div></div></section>
+<section id="compare"><h2>V2 — Compare Providers</h2><div class="card"><select id="ptype" onchange="compare()"><option value="">All provider types</option><option value="installer">Installer</option><option value="epc">Commercial EPC</option><option value="storage-integrator">Storage Integrator</option><option value="developer">Solar Developer</option><option value="financing">Financing Partner</option><option value="software">Monitoring / Software</option></select><input id="countryfilter" placeholder="Country" oninput="compare()"><div id="providers"></div></div></section>
+<section id="lead"><h2>V3–V4 — Solar Project Brief</h2><div class="card form"><input id="name" placeholder="Your name"><input id="company" placeholder="Company"><input id="contact" placeholder="Email or WhatsApp"><select id="buyer"><option value="homeowner">Homeowner</option><option value="business">Business / Commercial</option><option value="developer">Property / Project Developer</option><option value="investor">Investor</option><option value="installer">Installer / EPC</option></select><select id="project"><option value="residential-solar">Residential Solar</option><option value="commercial-solar">Commercial Solar</option><option value="storage">Solar + Storage</option><option value="utility-scale">Utility Scale</option><option value="solar-financing">Solar Financing</option><option value="monitoring-software">Monitoring / Software</option></select><input id="country" placeholder="Country"><input id="city" placeholder="City"><input id="property" placeholder="Property / site type"><input id="site" placeholder="Roof / land / site details"><input id="consumption" placeholder="Estimated consumption / bill"><input id="budget" placeholder="Budget context"><select id="storage"><option value="0">Storage not required</option><option value="1">Battery storage required</option></select><input id="timeline" placeholder="Target timeline"><select id="sitedata"><option value="0">Site data not finalized</option><option value="1">Site data ready</option></select>
+<select id="consumptiondata"><option value="0">Consumption data not finalized</option><option value="1">Consumption data ready</option></select>
+<select id="gridstatus"><option value="0">Grid / interconnection status not finalized</option><option value="1">Grid / interconnection status ready</option></select>
+<select id="financecontext"><option value="0">Financing context not finalized</option><option value="1">Financing context ready</option></select>
+<select id="contactpref"><option value="">Preferred contact</option><option>Email</option><option>WhatsApp</option><option>Phone</option></select>
+<textarea id="notes" placeholder="Goals, site constraints, grid connection, equipment preferences and other context"></textarea><button onclick="lead()">Submit project brief</button><div id="leadmsg"></div></div></section>
+
+<section id="premium"><h2>PREMIUM V5–V7</h2><div class="grid">
+<div class="tile"><b>V5 — Solar Domain Engine</b><span>Reusable acquisition configuration for residential, commercial, storage, utility-scale, financing and software.</span></div>
+<div class="tile"><b>V6 — Monetization</b><span>Provider packages, accepted-lead billing and owner revenue dashboard.</span></div>
+<div class="tile"><b>V7 — Solar Partner Portal</b><span>Assigned project leads, partner workflow and billing events.</span></div>
+</div><p style="margin-top:18px"><a class="btn" href="/engine.html">View Engine</a> <a class="btn" href="/partner.html">Solar Partner Portal</a> <a class="btn" href="/owner.html">Owner Dashboard</a></p></section>
+
+
+<section id="gold"><h2>GOLD V8–V10</h2><div class="grid">
+<div class="tile"><b>V8 — Project SLA + Billing</b><span>Neutral provider routing, capped rerouting, audit trail and monthly statements.</span></div>
+<div class="tile"><b>V9 — Provider Onboarding & Review</b><span>Identity, licensing, engineering, grid-scope and certification review.</span></div>
+<div class="tile"><b>V10 — Identity + Subscription</b><span>Magic links, secure sessions, contract acceptance and marketplace gating.</span></div>
+</div><p style="margin-top:18px"><a class="btn" href="/apply.html">Join Solar Provider Network</a> <a class="btn" href="/account.html">Provider Account</a> <a class="btn" href="/owner.html">GOLD Dashboard</a></p></section>
+
+
+<section id="vip"><h2>VIP V11–V14</h2><div class="grid">
+<div class="tile"><b>V11 — Solar Intelligence</b><span>Solar project, EPC and storage-focused SEO/GEO/AEO content foundation.</span></div>
+<div class="tile"><b>V12 — Attribution</b><span>Source, UTM and landing-page tracking from visit to solar opportunity.</span></div>
+<div class="tile"><b>V13 — A/B Testing</b><span>Stable homepage and project-CTA experiments per visitor session.</span></div>
+<div class="tile"><b>V14 — Personalization</b><span>Experience by buyer type, project type, geography, property/site context and storage requirement.</span></div>
+</div><p style="margin-top:18px"><a class="btn" href="/intelligence.html">Solar Intelligence</a> <a class="btn" href="/vip-analytics.html">VIP Analytics</a></p></section>
+
+
+<section id="enterprise"><h2>ENTERPRISE V15–V18</h2><div class="grid">
+<div class="tile"><b>V15 — Solar Project Readiness</b><span>Operational completeness before provider engagement.</span></div>
+<div class="tile"><b>V16 — Provider Sales Copilot</b><span>Safe solar B2B response drafts grounded in verified project and engineering facts.</span></div>
+<div class="tile"><b>V17 — Follow-up CRM</b><span>Qualification, accepted-lead and post-contact workflows.</span></div>
+<div class="tile"><b>V18 — Unified Solar Project Deal Room</b><span>One workspace for site data, engineering, grid, commercial and installation coordination.</span></div>
+</div><p style="margin-top:18px"><a class="btn" href="/enterprise.html">Enterprise Overview</a> <a class="btn" href="/deal-room.html">Solar Project Deal Room</a></p></section>
+
+</main><footer>SolarEnergy24.com · Solar project discovery and acquisition · Production, savings, payback, incentives, grid approval, pricing, warranties and installation timelines require site-specific provider confirmation.</footer><script src="/vip.js"></script><script src="/app.js"></script></body></html>
