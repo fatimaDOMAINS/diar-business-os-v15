@@ -1,0 +1,1 @@
+{"slug":"solar","name":"Solar Energy","conversion_modes":["lead","quote","match"],"intent_fields":["project_type","property_type","roof_or_site_text","estimated_consumption_text","budget_text","storage_required","timeline","country","city"]}
