@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SolarEnergy24 VIP Analytics</title><link rel="stylesheet" href="/style.css"></head><body>
+<header><div class="brand">SolarEnergy24 VIP Analytics</div><nav><a href="/">Marketplace</a><a href="/intelligence.html">Intelligence</a><a href="/owner.html">Owner</a></nav></header>
+<main><section><h1>V12–V14 Growth & Personalization</h1><div class="card form"><input id="akey" placeholder="Admin key"><button onclick="load()">Load analytics</button></div><div id="top" class="grid" style="margin-top:18px"></div></section>
+<section><h2>Traffic sources</h2><div id="sources"></div></section><section><h2>Buyer segments</h2><div id="segments"></div></section><section><h2>Experiments</h2><div id="experiments"></div></section></main>
+<script>
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+async function load(){const d=await (await fetch('/api/owner/vip-stats',{headers:{'x-admin-key':akey.value}})).json();
+top.innerHTML=[['Sessions',d.sessions],['Leads',d.leads],['Conversion %',d.conversion_rate]].map(x=>`<div class="tile"><b>${esc(x[0])}</b><span style="font-size:28px">${esc(x[1]??0)}</span></div>`).join('');
+sources.innerHTML=(d.sources||[]).map(x=>`<div class="provider"><b>${esc(x.source)}</b> · ${x.sessions} sessions</div>`).join('');
+segments.innerHTML=(d.segments||[]).map(x=>`<div class="provider"><b>${esc(x.segment)}</b> · ${x.leads} leads</div>`).join('');
+experiments.innerHTML=(d.experiments||[]).map(x=>`<div class="provider"><b>${esc(x.experiment_id)} / ${esc(x.name)}</b> · ${x.sessions} sessions</div>`).join('');
+}
+</script></body></html>
