@@ -1,0 +1,20 @@
+ALTER TABLE leads ADD COLUMN readiness_score INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE leads ADD COLUMN readiness_band TEXT;
+ALTER TABLE leads ADD COLUMN site_data_ready INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE leads ADD COLUMN consumption_data_ready INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE leads ADD COLUMN grid_status_ready INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE leads ADD COLUMN financing_context_ready INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE leads ADD COLUMN preferred_contact TEXT;
+
+CREATE TABLE IF NOT EXISTS project_briefs (
+  id TEXT PRIMARY KEY,
+  lead_id TEXT NOT NULL UNIQUE,
+  score INTEGER NOT NULL,
+  band TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  missing_json TEXT NOT NULL DEFAULT '[]',
+  risk_flags_json TEXT NOT NULL DEFAULT '[]',
+  recommended_next_action TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

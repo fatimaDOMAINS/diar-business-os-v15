@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS deal_rooms (
+  id TEXT PRIMARY KEY,
+  lead_id TEXT NOT NULL UNIQUE,
+  status TEXT NOT NULL DEFAULT 'active',
+  title TEXT NOT NULL,
+  buyer_summary TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS deal_room_items (
+  id TEXT PRIMARY KEY,
+  room_id TEXT NOT NULL,
+  item_type TEXT NOT NULL,
+  title TEXT NOT NULL,
+  body TEXT,
+  status TEXT,
+  provider_id TEXT,
+  sort_order INTEGER NOT NULL DEFAULT 0,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
