@@ -1,0 +1,17 @@
+{
+  "name": "diar-business-os-core",
+  "version": "15.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "preflight": "node scripts/preflight.mjs",
+    "deploy:staging": "npm run preflight && wrangler deploy --env staging",
+    "deploy:production": "npm run preflight && wrangler deploy --env production",
+    "db:migrate:local": "wrangler d1 migrations apply diar-business-os-dev --local",
+    "db:migrate:staging": "wrangler d1 migrations apply diar-business-os-staging --remote --env staging",
+    "db:migrate:production": "wrangler d1 migrations apply diar-business-os-production --remote --env production",
+    "smoke:staging": "node scripts/smoke.mjs staging",
+    "smoke:production": "node scripts/smoke.mjs production"
+  },
+  "devDependencies": { "wrangler": "^4.0.0" }
+}
